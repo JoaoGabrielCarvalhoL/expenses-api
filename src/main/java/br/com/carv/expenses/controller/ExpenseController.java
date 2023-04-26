@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,7 @@ public interface ExpenseController {
     @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
     consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     @ResponseStatus(HttpStatus.CREATED)
-    ResponseEntity<ExpenseGetResponse> save(@RequestBody ExpensePostRequest expensePostRequest);
+    ResponseEntity<ExpenseGetResponse> save(@RequestBody @Valid ExpensePostRequest expensePostRequest);
 
     @Operation(summary = "Update Expense.", description = "Request to update a expense.")
     @ApiResponses(value = { @ApiResponse(responseCode = "204", description = "No Content.", content =

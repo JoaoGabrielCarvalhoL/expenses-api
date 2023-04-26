@@ -9,10 +9,10 @@ import br.com.carv.expenses.model.dto.request.ExpensePutRequest;
 import br.com.carv.expenses.model.dto.response.ExpenseGetResponse;
 import br.com.carv.expenses.repository.ExpenseRepository;
 import br.com.carv.expenses.service.ExpenseService;
+import br.com.carv.expenses.service.ExpenseServiceCalculus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.stereotype.Service;
 
@@ -23,12 +23,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
-
     private final Logger logger = Logger.getLogger(ExpenseServiceImpl.class.getCanonicalName());
-
     private final ExpenseRepository expenseRepository;
     private final ExpenseMapper expenseMapper;
-
     public ExpenseServiceImpl(ExpenseRepository expenseRepository, ExpenseMapper expenseMapper) {
         this.expenseRepository = expenseRepository;
         this.expenseMapper = expenseMapper;
@@ -80,7 +77,6 @@ public class ExpenseServiceImpl implements ExpenseService {
     public void delete(UUID uuid) {
         logger.info("Deleting expense with id: " + uuid);
         this.expenseRepository.delete(findEntityById(uuid));
-
     }
 
     @Override

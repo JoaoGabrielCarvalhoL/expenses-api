@@ -2,12 +2,14 @@ package br.com.carv.expenses.model.dto.response;
 
 import br.com.carv.expenses.model.Category;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
+@JsonPropertyOrder({ "id", "name", "description", "amountSpent", "category", "date" })
 public class ExpenseGetResponse extends RepresentationModel<ExpenseGetResponse> {
 
     @JsonProperty("Id")
