@@ -1,6 +1,7 @@
 package br.com.carv.expenses.handler;
 
 import br.com.carv.expenses.exception.ExpenseNotFoundException;
+import br.com.carv.expenses.exception.UserNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -29,6 +30,13 @@ public class ExpenseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ExpenseNotFoundException.class)
     public final ResponseEntity<ExceptionResponse> handleNotFoundException(ExpenseNotFoundException exception) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse("Bad Request", HttpStatus.BAD_REQUEST.value(),
+                exception.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public final ResponseEntity<ExceptionResponse> handleUserNotFoundException(ExpenseNotFoundException exception) {
         ExceptionResponse exceptionResponse = new ExceptionResponse("Bad Request", HttpStatus.BAD_REQUEST.value(),
                 exception.getMessage(), LocalDateTime.now());
         return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.NOT_FOUND);
