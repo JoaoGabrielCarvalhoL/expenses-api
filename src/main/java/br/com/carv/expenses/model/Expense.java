@@ -1,5 +1,6 @@
 package br.com.carv.expenses.model;
 
+import br.com.carv.expenses.model.enumerated.Category;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -74,4 +75,6 @@ public class Expense extends GenericEntity {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+
 }

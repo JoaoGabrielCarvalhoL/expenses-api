@@ -4,6 +4,7 @@ import br.com.carv.expenses.model.Expense;
 import br.com.carv.expenses.model.dto.request.ExpensePostRequest;
 import br.com.carv.expenses.model.dto.request.ExpensePutRequest;
 import br.com.carv.expenses.model.dto.response.ExpenseGetResponse;
+import br.com.carv.expenses.model.dto.response.ExpenseSimpleResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
@@ -15,5 +16,7 @@ public interface ExpenseMapper {
     Expense toExpense(ExpensePostRequest expensePostRequest);
 
     Expense toExpense(ExpensePutRequest expensePutRequest);
+
+    ExpenseSimpleResponse toExpenseSimpleResponse(Expense expense);
 
 }

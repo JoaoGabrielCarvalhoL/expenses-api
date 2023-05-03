@@ -43,7 +43,7 @@ public interface ExpenseController {
     @PutMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
             consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    ResponseEntity<Void> update(@RequestBody ExpensePutRequest expensePutRequest);
+    ResponseEntity<Void> update(@RequestBody @Valid ExpensePutRequest expensePutRequest);
 
     @Operation(summary = "Find Expense By Id.", description = "Request to find a expense by id.")
     @ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK.", content =

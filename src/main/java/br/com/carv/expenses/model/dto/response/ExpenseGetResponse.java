@@ -1,6 +1,6 @@
 package br.com.carv.expenses.model.dto.response;
 
-import br.com.carv.expenses.model.Category;
+import br.com.carv.expenses.model.enumerated.Category;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.springframework.hateoas.RepresentationModel;

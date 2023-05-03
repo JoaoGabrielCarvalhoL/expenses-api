@@ -9,7 +9,6 @@ import br.com.carv.expenses.model.dto.request.ExpensePutRequest;
 import br.com.carv.expenses.model.dto.response.ExpenseGetResponse;
 import br.com.carv.expenses.repository.ExpenseRepository;
 import br.com.carv.expenses.service.ExpenseService;
-import br.com.carv.expenses.service.ExpenseServiceCalculus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
