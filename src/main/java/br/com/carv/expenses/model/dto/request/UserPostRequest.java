@@ -26,6 +26,10 @@ public record UserPostRequest(
         @NotBlank(message = "Password cannot be empty!")
         String password,
 
+        @JsonProperty("Papel")
+        @NotBlank(message = "Role cannot be empty")
+        String role,
+
         @JsonProperty("Data de Nascimento")
         LocalDate birthDate
 ) implements Serializable {

@@ -1,10 +1,10 @@
 package br.com.carv.expenses.model.enumerated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.Arrays;
 public enum Category {
-
     WATER_BILL("1", "Water Bill"),
     ENERGY_BILL("2", "Energy Bill"),
     TELEPHONE_BILL("3", "Telephone Bill"),
@@ -29,10 +29,10 @@ public enum Category {
         this.description = description;
     }
 
-    @JsonCreator
-    public static Category forValue(String value) {
-        return Arrays.stream(Category.values()).filter(category -> category.description.equals(value)).findFirst().orElse(null);
-    }
+//    @JsonCreator
+//    public static Category forValue(String value) {
+//        return Arrays.stream(Category.values()).filter(category -> category.id.equals(value)).findFirst().orElse(null);
+//    }
 
 
 

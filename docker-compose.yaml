@@ -13,3 +13,26 @@ services:
       - data:/var/lib/mysql
     ports:
       - "3307:3306"
+    networks:
+      - expense-network
+  expense:
+    container_name: expenses-api
+    restart: on-failure
+    build:
+      dockerfile: Dockerfile
+    image: expenses-api
+    environment:
+      SPRING.DATASOURCE.URL: jdbc:mariadb://db:3306/expenses?useTimezone=true&serverTimezone=UTC
+      SPRING.DATASOURCE.USERNAME: user
+      SPRING.DATASOURCE.PASSWORD: development
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - expense-network
+
+networks:
+  expense-network:
+    driver: bridge
+

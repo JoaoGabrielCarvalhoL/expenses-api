@@ -27,14 +27,17 @@ public class User extends GenericEntity {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDate birthDate;
 
+    private String role;
+
     public User() {}
 
-    public User(String name, String email, String username, String password, LocalDate birthDate) {
+    public User(String name, String email, String username, String password, LocalDate birthDate, String role) {
         this.name = name;
         this.email = email;
         this.username = username;
         this.password = password;
         this.birthDate = birthDate;
+        this.role = role;
     }
 
     public String getName() {
@@ -75,5 +78,13 @@ public class User extends GenericEntity {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

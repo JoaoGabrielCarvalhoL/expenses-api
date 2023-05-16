@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,11 +27,14 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+
+    private final PasswordEncoder passwordEncoder;
     private final Logger logger = Logger.getLogger(UserServiceImpl.class.getCanonicalName());
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -53,6 +57,7 @@ public class UserServiceImpl implements UserService {
     public UserGetResponse save(UserPostRequest userPostRequest) {
         logger.info("Saving user into database.");
         User user = userMapper.toUser(userPostRequest);
+        user.setPassword(passwordEncoder.encode(userPostRequest.password()));
         User saved = this.userRepository.save(user);
         UserGetResponse userGetResponse = userMapper.toUserGetResponse(saved);
         return userGetResponse.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UserControllerImpl.class)

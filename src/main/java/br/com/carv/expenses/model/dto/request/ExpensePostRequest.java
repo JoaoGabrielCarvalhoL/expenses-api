@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -27,6 +28,6 @@ public record ExpensePostRequest(
         @JsonProperty("Data")
         @NotNull(message = "Date cannot be null")
         LocalDate date
-        ) {
+        ) implements Serializable {
         }
 
